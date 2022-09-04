@@ -6,7 +6,7 @@ const Navbar: FC = () => {
 	const [menu, setMenu] = useState(false);
 
 	return (
-		<nav className="fixed px-8 w-screen h-16 flex justify-center items-center mx-auto border-b border-white border-opacity-30">
+		<nav className="fixed px-8 w-screen h-16 flex justify-center items-center mx-auto border-b bg-black z-50 border-white border-opacity-30">
 			<div className="max-w-screen-md w-full flex justify-between items-center">
 				<h1 className="font-bold text-2xl cursor-pointer">T3 Todo</h1>
 				{status !== "loading" && (

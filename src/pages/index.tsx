@@ -1,8 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Todos from "../components/Todos";
+import { useSession } from "next-auth/react";
 
 const Home: NextPage = ({}) => {
+	const { data: session, status } = useSession();
+
 	return (
 		<>
 			<Head>
@@ -12,7 +15,21 @@ const Home: NextPage = ({}) => {
 			</Head>
 
 			<main>
-				<Todos />
+				{status === "loading" ? (
+					<div className="h-screen w-screen flex justify-center items-center">
+						Loading...
+					</div>
+				) : (
+					<div>
+						{status === "unauthenticated" ? (
+							<div className="h-screen w-screen flex justify-center items-center">
+								Login in First
+							</div>
+						) : (
+							<Todos />
+						)}
+					</div>
+				)}
 			</main>
 		</>
 	);
